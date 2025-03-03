@@ -14,13 +14,13 @@ body {
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
 }
 
 #disease-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -30,7 +30,7 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .disease-btn {
@@ -38,6 +38,8 @@ button {
     padding: 10px;
     border-radius: 5px;
     text-align: center;
+    font-size: 14px;
+    word-wrap: break-word;
 }
 
 .disease-btn.selected {
@@ -56,4 +58,11 @@ button {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+
+/* 모바일 화면 대응 */
+@media screen and (max-width: 480px) {
+    #disease-container {
+        grid-template-columns: repeat(2, 1fr); /* 모바일에서는 2개씩 정렬 */
+    }
 }
