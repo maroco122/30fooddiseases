@@ -34,6 +34,7 @@ const diseaseData = {
 const confirmBtn = document.getElementById("confirm-btn");
 const resultDiv = document.getElementById("result");
 const diseaseList = document.getElementById("disease-list");
+const promoContainer = document.getElementById("promo-container");
 
 let selectedDiseases = [];
 
@@ -60,6 +61,7 @@ Object.keys(diseaseData).forEach((disease) => {
 confirmBtn.addEventListener("click", () => {
     if (selectedDiseases.length === 0) {
         resultDiv.innerHTML = "⚠️ 질병을 선택하세요.";
+        promoContainer.innerHTML = ""; // 선택창 제거
         return;
     }
 
@@ -70,4 +72,22 @@ confirmBtn.addEventListener("click", () => {
 
     resultDiv.innerHTML = 
         `💊 <strong>추천 건강기능식품:</strong><br>${Array.from(recommendations).join(", ")}`;
+
+    // 선택창 생성
+    promoContainer.innerHTML = "";
+    const promos = [
+        { text: "욕실에 아직도 이게 없다고?", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&maxPrice=15900&minPrice=15900&origQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&sort=rel&spec=M10014548%7CM10773813&viewType=list" },
+        { text: "이것만 있으면 문어는 공짜", url: "https://msearch.shopping.naver.com/search/all?adQuery=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&coupon=true&maxPrice=18900&minPrice=18900&naverPay=true&origQuery=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&pagingIndex=1&pagingSize=40&query=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&sort=rel&viewType=list" },
+        { text: "캠핑 필수 아이템", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&coupon=true&maxPrice=19700&minPrice=19700&naverPay=true&origQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%A0%84%EC%84%A0%EB%A6%B4&sort=rel&viewType=list" }
+    ];
+
+    promos.forEach(promo => {
+        const button = document.createElement("button");
+        button.textContent = promo.text;
+        button.classList.add("promo-button", "blink");
+        button.addEventListener("click", () => {
+            window.open(promo.url, "_blank");
+        });
+        promoContainer.appendChild(button);
+    });
 });
