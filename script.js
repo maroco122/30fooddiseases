@@ -76,7 +76,7 @@ confirmBtn.addEventListener("click", () => {
     // 선택창 생성
     promoContainer.innerHTML = "";
     const promos = [
-        { text: "욕실에 아직도 이게 없다고?", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&maxPrice=15900&minPrice=15900&origQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&sort=rel&spec=M10014548%7CM10773813&viewType=list" },
+        { text: "욕실에 아직도 이게 없다고?", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&maxPrice=15900&minPrice=15900&naverPay=true&npayType=2&origQuery=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%83%A4%EC%9B%8C%EA%B8%B0%ED%97%A4%EB%93%9C&sort=rel&viewType=list" },
         { text: "이것만 있으면 문어는 공짜", url: "https://msearch.shopping.naver.com/search/all?adQuery=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&coupon=true&maxPrice=18900&minPrice=18900&naverPay=true&origQuery=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&pagingIndex=1&pagingSize=40&query=%ED%95%B4%EB%A3%A8%EC%A7%88%EC%9E%A5%ED%99%94&sort=rel&viewType=list" },
         { text: "캠핑 필수 아이템", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&coupon=true&maxPrice=19700&minPrice=19700&naverPay=true&origQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%A0%84%EC%84%A0%EB%A6%B4&sort=rel&viewType=list" }
     ];
