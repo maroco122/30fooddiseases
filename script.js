@@ -1,100 +1,73 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+const diseaseData = {
+    "눈 건강 문제": ["루테인", "지아잔틴", "오메가-3"],
+    "관절염": ["글루코사민", "콘드로이틴", "MSM"],
+    "골다공증": ["칼슘", "비타민 D", "마그네슘"],
+    "빈혈": ["철분", "엽산", "비타민 B12"],
+    "고혈압": ["코엔자임 Q10", "오메가-3", "마그네슘"],
+    "고지혈증": ["오메가-3", "식이 섬유", "폴리코사놀"],
+    "당뇨병": ["크롬", "알파 리포산", "식이 섬유"],
+    "간 기능 저하": ["밀크시슬", "아티초크 추출물"],
+    "소화 불량": ["프로바이오틱스", "소화 효소"],
+    "면역력 저하": ["홍삼", "아연", "비타민 C"],
+    "피로": ["비타민 B군", "마카 추출물"],
+    "수면 장애": ["멜라토닌", "테아닌", "감태 추출물"],
+    "우울증": ["오메가-3", "비타민 D", "엽산"],
+    "불안 장애": ["테아닌", "마그네슘", "감태 추출물"],
+    "기억력 저하": ["포스파티딜세린", "오메가-3", "은행잎 추출물"],
+    "체중 관리": ["가르시니아", "녹차 추출물", "CLA"],
+    "피부 건강": ["콜라겐", "비타민 E", "히알루론산"],
+    "탈모": ["비오틴", "아연", "쏘팔메토"],
+    "전립선 건강": ["쏘팔메토", "아연", "리코펜"],
+    "갱년기 증상": ["이소플라본", "감마 리놀렌산", "블랙 코호시"],
+    "심혈관 질환": ["오메가-3", "코엔자임 Q10", "폴리코사놀"],
+    "호흡기 건강": ["NAC", "프로폴리스", "비타민 C"],
+    "알레르기": ["퀘르세틴", "비타민 C", "프로바이오틱스"],
+    "변비": ["식이 섬유", "프로바이오틱스", "마그네슘"],
+    "설사": ["프로바이오틱스", "아연", "전해질 보충제"],
+    "천식": ["오메가-3", "마그네슘", "비타민 D"],
+    "치주 질환": ["코엔자임 Q10", "비타민 C", "엽산"],
+    "요로 감염": ["크랜베리 추출물", "D-만노스", "프로바이오틱스"],
+    "갑상선 기능 저하증": ["요오드", "셀레늄", "아연"],
+    "눈의 건조함": ["오메가-3", "비타민 A", "히알루론산"]
+};
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-}
+const confirmBtn = document.getElementById("confirm-btn");
+const resultDiv = document.getElementById("result");
+const diseaseList = document.getElementById("disease-list");
 
-.container {
-    width: 90%;
-    max-width: 400px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+let selectedDiseases = [];
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
-}
+Object.keys(diseaseData).forEach((disease) => {
+    const item = document.createElement("div");
+    item.textContent = disease;
+    item.classList.add("disease-item");
 
-.disease-list {
-    max-height: 200px; /* 스크롤 가능한 높이 제한 */
-    overflow-y: auto; /* 세로 스크롤 활성화 */
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-}
+    item.addEventListener("click", () => {
+        if (selectedDiseases.includes(disease)) {
+            selectedDiseases = selectedDiseases.filter(d => d !== disease);
+            item.classList.remove("selected");
+        } else if (selectedDiseases.length < 3) {
+            selectedDiseases.push(disease);
+            item.classList.add("selected");
+        } else {
+            alert("최대 3개까지 선택할 수 있습니다.");
+        }
+    });
 
-.disease-item {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-}
+    diseaseList.appendChild(item);
+});
 
-.disease-item:hover {
-    background-color: #f0f0f0;
-}
-
-.disease-item.selected {
-    background-color: #4CAF50;
-    color: white;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-.result {
-    margin-top: 20px;
-    padding: 15px;
-    background: #e9ecef;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* 모바일 화면 대응 */
-@media screen and (max-width: 480px) {
-    h2 {
-        font-size: 18px;
+confirmBtn.addEventListener("click", () => {
+    if (selectedDiseases.length === 0) {
+        resultDiv.innerHTML = "⚠️ 질병을 선택하세요.";
+        return;
     }
 
-    .disease-list {
-        max-height: 150px; /* 모바일에서 더 작은 높이 */
-    }
+    let recommendations = new Set();
+    selectedDiseases.forEach(disease => {
+        diseaseData[disease].forEach(item => recommendations.add(item));
+    });
 
-    .disease-item {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 14px;
-    }
-
-    .result {
-        font-size: 14px;
-    }
-}
+    resultDiv.innerHTML = 
+        `💊 <strong>추천 건강기능식품:</strong><br>${Array.from(recommendations).join(", ")}`;
+});
