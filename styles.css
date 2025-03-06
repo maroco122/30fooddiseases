@@ -29,8 +29,8 @@ h2 {
 }
 
 .disease-list {
-    max-height: 200px; /* 스크롤 가능한 높이 제한 */
-    overflow-y: auto; /* 세로 스크롤 활성화 */
+    max-height: 200px;
+    overflow-y: auto;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -76,6 +76,36 @@ button:hover {
     font-size: 16px;
 }
 
+.promo-container {
+    margin-top: 20px;
+}
+
+.promo-button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    color: red;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.333s; /* 1초에 3번 깜빡임 (0.333s 간격) */
+}
+
+.promo-button.blink {
+    animation: blink 1s infinite; /* 1초 주기로 무한 반복 */
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    33% { opacity: 0; }
+    66% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 /* 모바일 화면 대응 */
 @media screen and (max-width: 480px) {
     h2 {
@@ -83,7 +113,7 @@ button:hover {
     }
 
     .disease-list {
-        max-height: 150px; /* 모바일에서 더 작은 높이 */
+        max-height: 150px;
     }
 
     .disease-item {
@@ -95,6 +125,10 @@ button:hover {
     }
 
     .result {
+        font-size: 14px;
+    }
+
+    .promo-button {
         font-size: 14px;
     }
 }
