@@ -77,7 +77,7 @@ confirmBtn.addEventListener("click", () => {
     promoContainer.innerHTML = "";
     const promos = [
         { text: "욕실에 아직도 이게 없다고?", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&maxPrice=15900&minPrice=15900&naverPay=true&origQuery=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%83%A4%EC%9B%8C%ED%97%A4%EB%93%9C&sort=rel&spec=M10014548%7CM10773813%20M10014547%7CM10030653&viewType=list" },
-        { text: "이것만 있으면 문어는 공짜", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EA%B0%80%EC%8A%B4%EC%9E%A5%ED%99%94&brand=139542&maxPrice=18900&minPrice=18900&naverPay=true&origQuery=%EA%B0%80%EC%8A%B4%EC%9E%A5%ED%99%94&pagingIndex=1&pagingSize=40&productSet=total&query=%EA%B0%80%EC%8A%B4%EC%9E%A5%ED%99%94&sort=rel&viewType=list" },
+        { text: "찐좋은 호스릴", url: "https://smartstore.naver.com/allgagu/products/11584828270" },
         { text: "캠핑 필수 아이템", url: "https://msearch.shopping.naver.com/search/all?adQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&coupon=true&maxPrice=19700&minPrice=19700&naverPay=true&origQuery=%EC%A0%84%EC%84%A0%EB%A6%B4&pagingIndex=1&pagingSize=40&productSet=total&query=%EC%A0%84%EC%84%A0%EB%A6%B4&sort=rel&viewType=list" }
     ];
 
